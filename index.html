@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Assignment 4</title>
+</head>
+<style>
+    .color {
+        /* background-color: wheat; */
+        width: 150px;
+        height: 150px;
+
+    }
+
+    .q2 {
+        /* border: 1px solid black; */
+        display: flex;
+        flex-direction: column;
+        row-gap: 1px;
+        justify-content: space-between;
+    }
+
+    #btnarr {
+        width: 150px;
+        height: 150px;
+
+    }
+
+    .q3 {
+        /* border: 1px solid black; */
+        display: flex;
+        flex-direction: column;
+        row-gap: 1px;
+        justify-content: space-between;
+    }
+</style>
+
+<body>
+    <!-- 1 -->
+    <div id="main" style="background-color:blueviolet; width: 200px; height: 200px; padding: 1%;">
+        <h1 id="name" style="color: white;"></h1>
+    </div>
+    <br>
+    <button id="myButton">Hide</button>
+    <button id="myButton2">Change color</button>
+    <button id="myButton3">Details</button>
+    <br><br>
+
+    <!-- 2 -->
+    <div class="q2">
+        <button id="one" class="color">1
+            <p class="num"></p>
+        </button><br>
+        <button id="two" class="color">2</button><br>
+        <button id="three" class="color">3</button><br>
+        <button id="four" class="color">4</button><br>
+        <button id="five" class="color">5</button><br>
+        <button id="six" class="color">6</button><br>
+        <button id="seven" class="color">7</button><br>
+        <button id="eight" class="color">8</button><br>
+        <button id="nine" class="color">9</button><br>
+        <button id="ten" class="color">10</button>
+
+    </div>
+    <br><br>
+
+    <!-- 3 -->
+    <div class="q3">
+        <div id="languageButtons"></div>
+        <div id="selectedLanguage"></div>
+    </div>
+    <br><br>
+    <hr>
+    <!-- 4 -->
+
+
+    <h1>Form</h1>
+    <form id="userDetailsForm">
+        Name: <input type="text" id="name" name="name" required><br>
+        <span id="nameError" class="error"></span><br><br>
+
+        Phone Number: <input type="text" id="phone" name="phone" required><br>
+        <span id="phoneError" class="error"></span><br><br>
+
+        Place: <input type="text" id="place" name="place" required><br>
+        <span id="placeError" class="error"></span><br><br>
+
+        Company Name: <input type="text" id="company" name="company" required><br>
+        <span id="companyError" class="error"></span><br><br>
+
+        Pin Code: <input type="text" id="pin" name="pin" required><br>
+        <span id="pinError" class="error"></span><br><br>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+        <button type="button" id="prepopulateButton" onclick="prepopulateForm()">Prepopulate</button>
+    </form>
+
+    <hr>
+    <!-- 5 -->
+
+    <h1>Change Title</h1>
+    <form id="titleForm">
+        New Title: <input type="text" id="newTitle" maxlength="50"><br>
+        <span id="titleError" class="error"></span><br><br>
+        <button type="button" onclick="changeTitle()">Change</button>
+    </form>
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>
