@@ -156,7 +156,7 @@ btnten.addEventListener("mouseout", () => {
 
 // 3
 
-const langs = ["JavaScript", "Python", "Java", "C++", "C#", "PHP", "Swift", "Kotlin", "Ruby", "Go"];
+const langs = ["JavaScript", "Python", "Swift", "Kotlin", "Ruby", "Go", "Java", "C++", "C#", "PHP"];
 const btnsDiv = document.getElementById("languageButtons");
 const selLangDiv = document.getElementById("selectedLanguage");
 
@@ -170,74 +170,97 @@ langs.forEach(lang => {
 });
 
 // 4.a
-const form = document.getElementById('user-form');
-const prepopulateButton = document.getElementById('prepopulate');
 
-form.addEventListener('submit', (event) => {
-    event.preventDefault();
+function submitForm() {
+    let nm = document.getElementById("name").value;
+    let ph = document.getElementById("phone").value;
+    let pl = document.getElementById("place").value;
+    let comp = document.getElementById("company").value;
+    let pn = document.getElementById("pin").value;
+
+    let nmErr = document.getElementById("nameErr");
+    let phErr = document.getElementById("phoneErr");
+    let plErr = document.getElementById("placeErr");
+    let compErr = document.getElementById("companyErr");
+    let pnErr = document.getElementById("pinErr");
+
+    nmErr.textContent = "";
+    phErr.textContent = "";
+    plErr.textContent = "";
+    compErr.textContent = "";
+    pnErr.textContent = "";
+
     let isValid = true;
 
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const place = document.getElementById('place').value;
-    const company = document.getElementById('company').value;
-    const pincode = document.getElementById('pincode').value;
-
-    if (!name) {
-        document.getElementById('name-error').textContent = 'Name is required';
+    if (nm == "") {
+        nmErr.textContent = "Name is required";
         isValid = false;
-    } else {
-        document.getElementById('name-error').textContent = '';
+    }
+    if (ph == "") {
+        phErr.textContent = "Phone is required";
+        isValid = false;
+    } else if (isNaN(ph)) {
+        phErr.textContent = "Only numbers are allowed";
+        isValid = false;
+    } else if (ph.length < 10) {
+        phErr.textContent = "Minimum 10 digits required";
+        isValid = false;
     }
 
-    if (!phone || isNaN(phone) || phone.length < 10) {
-        document.getElementById('phone-error').textContent = 'Valid phone number is required';
+    if (pl == "") {
+        plErr.textContent = "Place is required";
         isValid = false;
-    } else {
-        document.getElementById('phone-error').textContent = '';
+    }
+    if (comp == "") {
+        compErr.textContent = "Company is required";
+        isValid = false;
+    }
+    if (pn == "") {
+        pnErr.textContent = "Pin Code is required";
+        isValid = false;
+    } else if (isNaN(pn)) {
+        pnErr.textContent = "Only numbers are allowed";
+        isValid = false;
     }
 
-    if (!place) {
-        document.getElementById('place-error').textContent = 'Place is required';
-        isValid = false;
-    } else {
-        document.getElementById('place-error').textContent = '';
-    }
-
-    if (!company) {
-        document.getElementById('company-error').textContent = 'Company name is required';
-        isValid = false;
-    } else {
-        document.getElementById('company-error').textContent = '';
-    }
-
-    if (!pincode || isNaN(pincode) || pincode.length !== 6) {
-        document.getElementById('pincode-error').textContent = 'Valid 6-digit pin code is required';
-        isValid = false;
-    } else {
-        document.getElementById('pincode-error').textContent = '';
-    }
 
     if (isValid) {
-        const userDetails = { name, phone, place, company, pincode };
-        localStorage.setItem('userDetails', JSON.stringify(userDetails));
-        form.reset();
-        alert("Form submitted successfully!");
-    }
-});
+        let formData = {
+            name: nm,
+            phone: ph,
+            place: pl,
+            company: comp,
+            pin: pn
+        };
 
-prepopulateButton.addEventListener('click', () => {
-    const userDetails = JSON.parse(localStorage.getItem('userDetails'));
-    if (userDetails) {
-        document.getElementById('name').value = userDetails.name;
-        document.getElementById('phone').value = userDetails.phone;
-        document.getElementById('place').value = userDetails.place;
-        document.getElementById('company').value = userDetails.company;
-        document.getElementById('pincode').value = userDetails.pincode;
-    } else {
-        prepopulateButton.disabled = true;
+        localStorage.setItem("formData", JSON.stringify(formData));
+
+        document.getElementById("myForm").reset();
+
+        document.getElementById("prepopBtn").disabled = false;
     }
-});
+}
+
+function prepopForm() {
+    let storedData = localStorage.getItem("formData");
+    if (storedData) {
+        let formData = JSON.parse(storedData);
+        document.getElementById("name").value = formData.name;
+        document.getElementById("phone").value = formData.phone;
+        document.getElementById("place").value = formData.place;
+        document.getElementById("company").value = formData.company;
+        document.getElementById("pin").value = formData.pin;
+    }
+}
+
+window.onload = function () {
+    if (localStorage.getItem("formData")) {
+        document.getElementById("prepopBtn").disabled = false;
+    } else {
+        document.getElementById("prepopBtn").disabled = true;
+    }
+};
+
 
 // 5
 

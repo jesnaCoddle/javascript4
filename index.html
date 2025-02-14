@@ -15,7 +15,6 @@
     }
 
     .q2 {
-        /* border: 1px solid black; */
         display: flex;
         flex-direction: column;
         row-gap: 1px;
@@ -29,7 +28,6 @@
     }
 
     .q3 {
-        /* border: 1px solid black; */
         display: flex;
         flex-direction: column;
         row-gap: 1px;
@@ -78,34 +76,32 @@
     <br><br>
     <hr>
     <!-- 4 -->
-    <form id="user-form">
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <div id="name-error" class="error"></div>
-        </div>
-        <div>
-            <label for="phone">Phone Number:</label>
-            <input type="text" id="phone" name="phone" required>
-            <div id="phone-error" class="error"></div>
-        </div>
-        <div>
-            <label for="place">Place:</label>
-            <input type="text" id="place" name="place" required>
-            <div id="place-error" class="error"></div>
-        </div>
-        <div>
-            <label for="company">Company:</label>
-            <input type="text" id="company" name="company" required>
-            <div id="company-error" class="error"></div>
-        </div>
-        <div>
-            <label for="pincode">Pin Code:</label>
-            <input type="text" id="pincode" name="pincode" required>
-            <div id="pincode-error" class="error"></div>
-        </div>
-        <button type="submit">Submit</button>
-        <button type="button" id="prepopulate">Prepopulate</button>
+
+    <h1>Form</h1>
+
+    <form id="myForm">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <span id="nameErr" class="error"></span><br><br>
+
+        <label for="phone">Phone:</label><br>
+        <input type="text" id="phone" name="phone"><br>
+        <span id="phoneErr" class="error"></span><br><br>
+
+        <label for="place">Place:</label><br>
+        <input type="text" id="place" name="place"><br>
+        <span id="placeErr" class="error"></span><br><br>
+
+        <label for="company">Company:</label><br>
+        <input type="text" id="company" name="company"><br>
+        <span id="companyErr" class="error"></span><br><br>
+
+        <label for="pin">Pin Code:</label><br>
+        <input type="text" id="pin" name="pin"><br>
+        <span id="pinErr" class="error"></span><br><br>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+        <button type="button" id="prepopBtn" onclick="prepopForm()">Prepopulate</button>
     </form>
 
     <hr>
