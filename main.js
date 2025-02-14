@@ -26,7 +26,7 @@ myBtn2.addEventListener("click", () => {
 myBtn3.addEventListener("click", () => {
     if (img.style.display === "none") {
         img.style.display = "block";
-        document.getElementById("name").innerHTML = "Jesna Joseph";
+        document.getElementById("dname").innerHTML = "Jesna Joseph";
     }
     else {
         img.style.display = "none";
@@ -232,7 +232,7 @@ function submitForm() {
             company: comp,
             pin: pn
         };
-
+        console.log(formData);
         localStorage.setItem("formData", JSON.stringify(formData));
 
         document.getElementById("myForm").reset();
