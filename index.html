@@ -78,27 +78,34 @@
     <br><br>
     <hr>
     <!-- 4 -->
-
-
-    <h1>Form</h1>
-    <form id="userDetailsForm">
-        Name: <input type="text" id="name" name="name" required><br>
-        <span id="nameError" class="error"></span><br><br>
-
-        Phone Number: <input type="text" id="phone" name="phone" required><br>
-        <span id="phoneError" class="error"></span><br><br>
-
-        Place: <input type="text" id="place" name="place" required><br>
-        <span id="placeError" class="error"></span><br><br>
-
-        Company Name: <input type="text" id="company" name="company" required><br>
-        <span id="companyError" class="error"></span><br><br>
-
-        Pin Code: <input type="text" id="pin" name="pin" required><br>
-        <span id="pinError" class="error"></span><br><br>
-
-        <button type="button" onclick="submitForm()">Submit</button>
-        <button type="button" id="prepopulateButton" onclick="prepopulateForm()">Prepopulate</button>
+    <form id="user-form">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <div id="name-error" class="error"></div>
+        </div>
+        <div>
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" required>
+            <div id="phone-error" class="error"></div>
+        </div>
+        <div>
+            <label for="place">Place:</label>
+            <input type="text" id="place" name="place" required>
+            <div id="place-error" class="error"></div>
+        </div>
+        <div>
+            <label for="company">Company:</label>
+            <input type="text" id="company" name="company" required>
+            <div id="company-error" class="error"></div>
+        </div>
+        <div>
+            <label for="pincode">Pin Code:</label>
+            <input type="text" id="pincode" name="pincode" required>
+            <div id="pincode-error" class="error"></div>
+        </div>
+        <button type="submit">Submit</button>
+        <button type="button" id="prepopulate">Prepopulate</button>
     </form>
 
     <hr>

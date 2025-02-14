@@ -169,82 +169,74 @@ langs.forEach(lang => {
 });
 
 // 4.a
-function submitForm() {
-    clearErrors();
+const form = document.getElementById('user-form');
+const prepopulateButton = document.getElementById('prepopulate');
 
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
     let isValid = true;
 
-    const name = document.getElementById("name").value;
-    const phone = document.getElementById("phone").value;
-    const place = document.getElementById("place").value;
-    const company = document.getElementById("company").value;
-    const pin = document.getElementById("pin").value;
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const place = document.getElementById('place').value;
+    const company = document.getElementById('company').value;
+    const pincode = document.getElementById('pincode').value;
 
-
-    if (name === "") {
-        document.getElementById("nameError").textContent = "Name is required.";
+    if (!name) {
+        document.getElementById('name-error').textContent = 'Name is required';
         isValid = false;
-    }
-    if (phone === "") {
-        document.getElementById("phoneError").textContent = "Phone number is required.";
-        isValid = false;
-    } else if (isNaN(phone)) {
-        document.getElementById("phoneError").textContent = "Only numbers are allowed.";
-        isValid = false;
-    }
-    // 4.c
-    else if (phone.length < 10) {
-        document.getElementById("phoneError").textContent = "Phone number should be at least 10 digits.";
-        isValid = false;
+    } else {
+        document.getElementById('name-error').textContent = '';
     }
 
-    if (place === "") {
-        document.getElementById("placeError").textContent = "Place is required.";
+    if (!phone || isNaN(phone) || phone.length < 10) {
+        document.getElementById('phone-error').textContent = 'Valid phone number is required';
         isValid = false;
+    } else {
+        document.getElementById('phone-error').textContent = '';
     }
-    if (company === "") {
-        document.getElementById("companyError").textContent = "Company name is required.";
+
+    if (!place) {
+        document.getElementById('place-error').textContent = 'Place is required';
         isValid = false;
+    } else {
+        document.getElementById('place-error').textContent = '';
     }
-    if (pin === "") {
-        document.getElementById("pinError").textContent = "Pin code is required.";
+
+    if (!company) {
+        document.getElementById('company-error').textContent = 'Company name is required';
         isValid = false;
-    } else if (isNaN(pin)) {
-        document.getElementById("pinError").textContent = "Only numbers are allowed.";
-        isValid = false;
+    } else {
+        document.getElementById('company-error').textContent = '';
     }
-    // 4.d
+
+    if (!pincode || isNaN(pincode) || pincode.length !== 6) {
+        document.getElementById('pincode-error').textContent = 'Valid 6-digit pin code is required';
+        isValid = false;
+    } else {
+        document.getElementById('pincode-error').textContent = '';
+    }
 
     if (isValid) {
-        const formData = { name, phone, place, company, pin };
-        localStorage.setItem("formData", JSON.stringify(formData));
-
-        document.getElementById("userDetailsForm").reset();
-
-        document.getElementById("prepopulateButton").disabled = false;
-
+        const userDetails = { name, phone, place, company, pincode };
+        localStorage.setItem('userDetails', JSON.stringify(userDetails));
+        form.reset();
         alert("Form submitted successfully!");
     }
-}
+});
 
-function clearErrors() {
-    const errorElements = document.getElementsByClassName("error");
-    for (let i = 0; i < errorElements.length; i++) {
-        errorElements[i].textContent = "";
+prepopulateButton.addEventListener('click', () => {
+    const userDetails = JSON.parse(localStorage.getItem('userDetails'));
+    if (userDetails) {
+        document.getElementById('name').value = userDetails.name;
+        document.getElementById('phone').value = userDetails.phone;
+        document.getElementById('place').value = userDetails.place;
+        document.getElementById('company').value = userDetails.company;
+        document.getElementById('pincode').value = userDetails.pincode;
+    } else {
+        prepopulateButton.disabled = true;
     }
-}
-// 4.e
-function prepopulateForm() {
-    const storedData = localStorage.getItem("formData");
-    if (storedData) {
-        const formData = JSON.parse(storedData);
-        document.getElementById("name").value = formData.name;
-        document.getElementById("phone").value = formData.phone;
-        document.getElementById("place").value = formData.place;
-        document.getElementById("company").value = formData.company;
-        document.getElementById("pin").value = formData.pin;
-    }
-}
+});
 
 // 5
 
