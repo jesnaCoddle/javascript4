@@ -1,0 +1,6 @@
+projectKey=javascript4
+serverUrl=http://localhost:9099
+serverVersion=25.2.0.102705
+dashboardUrl=http://localhost:9099/dashboard?id=javascript4
+ceTaskId=6c98c722-eecc-40cd-9813-182c3d6781b7
+ceTaskUrl=http://localhost:9099/api/ce/task?id=6c98c722-eecc-40cd-9813-182c3d6781b7
